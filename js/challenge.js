@@ -61,6 +61,14 @@ document.addEventListener("DOMContentLoaded", function(e){
             pauseProgram();
         } else if (e.target.id === "pause" && e.target.innerText === "resume") {
             resumeProgram();
+        } else if (e.target.id === "submit") {
+            e.preventDefault()
+            const commentText = e.target.parentNode.querySelector("#comment-input").value;
+            const p = document.createElement("p");
+            const div = document.getElementById("list");
+            p.innerText = commentText;
+            div.appendChild(p);
+            e.target.parentNode.querySelector("#comment-input").value = null
         }
     })
     
