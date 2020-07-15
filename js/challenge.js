@@ -22,11 +22,22 @@ document.addEventListener('DOMContentLoaded', function(){
     };
 
     function clickHeart(){
-        let li = document.createElement("li");
-     let someLi = ul.appendChild(li);
-     let newLi =someLi.innerText = `${count.textContent} has been liked time`
-
-      console.log(count.textContent)
+        
+        let counter = 1;
+        let countAsInt = parseInt(count.textContent, 10); 
+        // console.log(document.getElementById(countAsInt))
+        if (!document.getElementById(countAsInt)){
+         let li = document.createElement("li")
+         li.id = countAsInt; 
+         let newli = ul.appendChild(li);
+         
+          
+         newli.innerText = `${count.textContent} has been liked ${counter} time`
+         
+        }else {
+            li.innerText = `${count.textContent} has been ${counter +1}liked time`
+        };
+        
     };
 
 
