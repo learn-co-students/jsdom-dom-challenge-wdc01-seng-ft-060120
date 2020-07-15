@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     const heartButton = document.getElementById("heart");
     const pauseButton = document.getElementById("pause");
     const submitButton = document.getElementById("submit");
+    let timer = setInterval(increaseCounter, 1000);
     
     function increaseCounter(){
         counter.innerText = (parseInt(counter.innerText, 10) + 1)
@@ -73,6 +74,6 @@ document.addEventListener("DOMContentLoaded", function(e){
     })
     
     
-    var timer = setInterval(increaseCounter, 1000);
+    
     
 })
