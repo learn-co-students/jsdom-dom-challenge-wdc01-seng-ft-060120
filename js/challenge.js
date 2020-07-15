@@ -1,6 +1,11 @@
 document.addEventListener("DOMContentLoaded", function(e){
     const counter = document.getElementById("counter");
     const likeUl = document.querySelector(".likes");
+    const minusButton = document.getElementById("minus");
+    const plusButton = document.getElementById("plus");
+    const heartButton = document.getElementById("heart");
+    const pauseButton = document.getElementById("pause");
+    const submitButton = document.getElementById("submit");
     
     function increaseCounter(){
         counter.innerText = (parseInt(counter.innerText, 10) + 1)
@@ -26,9 +31,23 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
 
     }
-    
-    function startTimer(){
-        setInterval (increaseCounter, 1000)
+
+    function pauseProgram() {
+        minusButton.disabled = true; 
+        plusButton.disabled = true;
+        heartButton.disabled = true;
+        submitButton.disabled = true;
+        clearInterval(timer);
+        pauseButton.innerText = "resume";
+    }
+
+    function resumeProgram() {
+        minusButton.disabled = false; 
+        plusButton.disabled = false;
+        heartButton.disabled = false;
+        submitButton.disabled = false;
+        timer = setInterval(increaseCounter, 1000);
+        pauseButton.innerText = "pause";
     }
 
     document.addEventListener('click', function(e) {
@@ -38,10 +57,14 @@ document.addEventListener("DOMContentLoaded", function(e){
             decreaseCounter();
         } else if (e.target.id === "heart") {
             addLike();
+        } else if (e.target.id === "pause" && e.target.innerText === "pause") {
+            pauseProgram();
+        } else if (e.target.id === "pause" && e.target.innerText === "resume") {
+            resumeProgram();
         }
     })
     
     
-    startTimer();
+    var timer = setInterval(increaseCounter, 1000);
     
 })
